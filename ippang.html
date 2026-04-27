@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Birthday, Ippang!</title>
+  <style>
+ 	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      margin: 0;
+      padding: 0 20px 40px;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+    }
+    header {
+      text-align: center;
+      padding: 40px 0 20px;
+    }
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+      color: #f8f7f3;
+    }
+    header p {
+      font-size: 1.3em;
+      margin-top: 8px;
+      color: #f8f7f3;
+    }
+    main {
+      max-width: 700px;
+      margin: 0 auto 40px;
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+    main p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      color: #444;
+      white-space: pre-wrap;
+    }
+    section.photos {
+      max-width: 700px;
+      margin: 0 auto;
+      display: grid;
+      gap: 15px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    section.photos img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      object-fit: cover;
+      height: 250px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 1.1em;
+      color: #f8f7f3;
+    }
+  </style>
+</head>
+<body>
+
+  <audio autoplay controls>
+	<source src="Ten2Five.mp3" type="audio/mpeg">
+  </audio>
+
+  <header>
+    <h1>Hey Ippang! <br>🎉 Finally turning 26 🎉</br></h1>
+    <p>Wishing you an amazing day filled with laughter, good vibes, and all the best things life has to offer!</p>
+  </header>
+
+  <main>
+    <p>
+      Hey Irfan <i>(or should I call you, Ippang?)</i>,  
+
+      Just wanted to drop by and say happy birthday, dude! Hope your day is chill, your food is good, and your laughs are loud. You're one of those awesome people who make hanging out a blast — family, friends, and everyone who knows you is lucky to have you around. Here's to more memories, crazy adventures, and everything you’re hoping for this year.  
+
+      Cheers, bro!
+      <i>Your immortal enemy, Mikasa✨</i>  
+    </p>
+  </main>
+
+  <section class="photos" aria-label="Photos of Ippang">
+    <img src="ippang1.jpeg" alt="Ippang casual close-up selfie with earphones" />
+    <img src="ippang2.jpeg" alt="Ippang and friends hanging out at a cafe" />
+    <img src="ippang3.jpeg" alt="Ippang with friends outside at night showing peace signs" />
+    <img src="ippang4.jpeg" alt="Ippang on a video call selfie" />
+    <img src="ippang5.jpeg" alt="Ippang standing confidently outdoors with rocky hill backdrop" />
+    <img src="ipang6.jpeg" alt="Ippang at night with palm trees and lights" />
+  </section>
+
+  <footer>
+    From all of us who know you — here’s to another year of awesomeness.<br />
+    Stay cool, Ippang!
+  </footer>
+
+  <script>
+        // Confetti effect
+        function launchConfetti() {
+            const confetti = document.createElement('div');
+            confetti.style.position = 'fixed';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.top = '-10px';
+            confetti.style.width = '10px';
+            confetti.style.height = '10px';
+            confetti.style.background = `hsl(${Math.random() * 360}, 70%, 60%)`;
+            confetti.style.pointerEvents = 'none';
+            confetti.style.zIndex = '1000';
+            confetti.style.animation = 'fall 3s linear forwards';
+            document.body.appendChild(confetti);
+            
+            // Hapus elemen setelah animasi selesai agar tidak memberatkan browser
+            setTimeout(() => confetti.remove(), 3000);
+        }
+
+        const fallStyle = document.createElement('style');
+        fallStyle.textContent = `
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(720deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(fallStyle);
+
+        // Meluncurkan konfeti setiap 500ms
+        setInterval(launchConfetti, 200);
+    </script>
+
+</body>
+</html>
