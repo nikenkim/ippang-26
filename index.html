@@ -5,6 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Happy Birthday, Ippang!</title>
   <style>
+	.wave-text span {
+    display: inline-block;
+    animation: wave 1s infinite;
+    font-size: 1.25em;
+  }
+
+  @keyframes wave {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+
+  /* Memberi delay berbeda pada setiap huruf */
+  .wave-text span:nth-child(1) { animation-delay: 0.1s; }
+  .wave-text span:nth-child(2) { animation-delay: 0.2s; }
+  .wave-text span:nth-child(3) { animation-delay: 0.3s; }
+  .wave-text span:nth-child(4) { animation-delay: 0.4s; }
+  .wave-text span:nth-child(5) { animation-delay: 0.5s; }
+
  	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
         
         * {
@@ -14,6 +32,7 @@
         }
         
     body {
+
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       margin: 0;
@@ -25,7 +44,7 @@
     }
     header {
       text-align: center;
-      padding: 40px 0 20px;
+      padding: 15px 0 15px;
     }
     header h1 {
       font-size: 3em;
@@ -74,13 +93,14 @@
   </style>
 </head>
 <body>
-
-  <audio autoplay controls>
+   <audio autoplay controls>
 	<source src="Ten2Five.mp3" type="audio/mpeg">
   </audio>
 
   <header>
-    <h1>Hey Ippang! <br>🎉 Finally turning 26 🎉</br></h1>
+    <h1 class="wave-text">Hey
+    <span>I</span><span>p</span><span>p</span><span>a</span><span>n</span><span>g</span></h1>
+    <h1>🎉 Finally turning 26 🎉</h1>
     <p>Wishing you an amazing day filled with laughter, good vibes, and all the best things life has to offer!</p>
   </header>
 
@@ -90,7 +110,7 @@
 
       Just wanted to drop by and say happy birthday, dude! Hope your day is chill, your food is good, and your laughs are loud. You're one of those awesome people who make hanging out a blast — family, friends, and everyone who knows you is lucky to have you around. Here's to more memories, crazy adventures, and everything you’re hoping for this year.  
 
-      Cheers, bro!
+      Cheers, bro!🥂
       <i>Your immortal enemy, Mikasa✨</i>  
     </p>
   </main>
@@ -124,7 +144,6 @@
             confetti.style.animation = 'fall 3s linear forwards';
             document.body.appendChild(confetti);
             
-            // Hapus elemen setelah animasi selesai agar tidak memberatkan browser
             setTimeout(() => confetti.remove(), 3000);
         }
 
