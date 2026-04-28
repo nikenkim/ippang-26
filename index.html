@@ -1,166 +1,490 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Birthday, Ippang!</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Birthday, Ippang! 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fredoka+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-	.wave-text span {
-    display: inline-block;
-    animation: wave 1s infinite;
-    font-size: 1.1em;
-  }
-
-  @keyframes wave {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-  }
-
-  /*delay*/
-  .wave-text span:nth-child(1) { animation-delay: 0.1s; }
-  .wave-text span:nth-child(2) { animation-delay: 0.2s; }
-  .wave-text span:nth-child(3) { animation-delay: 0.3s; }
-  .wave-text span:nth-child(4) { animation-delay: 0.4s; }
-  .wave-text span:nth-child(5) { animation-delay: 0.5s; }
-
- 	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-    body {
-
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    * {
       margin: 0;
-      padding: 0 20px 40px;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-
+      padding: 0;
+      box-sizing: border-box;
     }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(-45deg, #ff9a9e, #fecfef, #fecfef, #a8edea, #fed6e3);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating Elements */
+    .floating-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .float {
+      position: absolute;
+      animation: float 6s ease-in-out infinite;
+      opacity: 0.7;
+    }
+
+    .float:nth-child(1) { left: 10%; animation-delay: 0s; font-size: 2rem; color: #ff6b6b; }
+    .float:nth-child(2) { left: 20%; animation-delay: 1s; font-size: 1.5rem; color: #4ecdc4; }
+    .float:nth-child(3) { left: 80%; animation-delay: 2s; font-size: 2.5rem; color: #45b7d1; }
+    .float:nth-child(4) { left: 90%; animation-delay: 3s; font-size: 1.8rem; color: #feca57; }
+    .float:nth-child(5) { left: 50%; animation-delay: 4s; font-size: 2rem; color: #ff9ff3; top: 80%; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    /* Header */
     header {
       text-align: center;
-      padding: 15px 0 15px;
+      padding: clamp(20px, 5vw, 40px) 20px;
+      position: relative;
+      z-index: 10;
     }
-    header h1 {
-      font-size: 3em;
-      margin: 0;
-      color: #f8f7f3;
+
+    .birthday-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #feca57);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      animation: bounceIn 1.5s ease-out;
     }
+
+    .wave-text {
+      display: inline-block;
+      animation: wave 2s infinite;
+    }
+
+    .wave-text span {
+      display: inline-block;
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(1.2rem, 4vw, 2rem);
+      font-weight: 700;
+      color: #ff6b6b;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      animation: waveLetter 2s infinite;
+    }
+
+    @keyframes wave {
+      0%, 100% { transform: rotate(-5deg); }
+      50% { transform: rotate(5deg); }
+    }
+
+    @keyframes waveLetter {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .wave-text span:nth-child(1) { animation-delay: 0.1s; }
+    .wave-text span:nth-child(2) { animation-delay: 0.2s; }
+    .wave-text span:nth-child(3) { animation-delay: 0.3s; }
+    .wave-text span:nth-child(4) { animation-delay: 0.4s; }
+    .wave-text span:nth-child(5) { animation-delay: 0.5s; }
+    .wave-text span:nth-child(6) { animation-delay: 0.6s; }
+
     header p {
-      font-size: 1.3em;
-      margin-top: 8px;
-      color: #f8f7f3;
+      font-size: clamp(1rem, 3vw, 1.3rem);
+      color: #fff;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+      margin-bottom: 1rem;
+      animation: fadeInUp 1s ease-out 0.5s both;
     }
+
+    /* Audio Player */
+    .audio-player {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1rem auto;
+      max-width: 300px;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      padding: 1rem;
+      border-radius: 50px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      animation: fadeInUp 1s ease-out 0.8s both;
+    }
+
+    .audio-player audio {
+      flex: 1;
+      outline: none;
+    }
+
+    /* Main Content */
     main {
-      max-width: 700px;
-      margin: 0 auto 40px;
-      background: white;
-      padding: 30px 40px;
-      border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(20px);
+      padding: clamp(2rem, 5vw, 3rem);
+      border-radius: 25px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      position: relative;
+      z-index: 10;
+      animation: fadeInUp 1s ease-out 1s both;
     }
+
     main p {
-      font-size: 1.2em;
-      line-height: 1.6;
+      font-size: clamp(1rem, 2.5vw, 1.2em);
+      line-height: 1.8;
       color: #444;
       white-space: pre-wrap;
+      text-align: justify;
     }
-    section.photos {
-      max-width: 700px;
-      margin: 0 auto;
+
+    .signature {
+      font-style: italic;
+      color: #ff6b6b;
+      font-weight: 600;
+      margin-top: 2rem;
+      font-size: 1.1em;
+    }
+
+    /* Photos Section */
+    .photos {
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 0 20px;
       display: grid;
-      gap: 15px;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      position: relative;
+      z-index: 10;
     }
-    section.photos img {
+
+    .photo-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+      transition: all 0.4s ease;
+      animation: fadeInUp 0.8s ease-out both;
+    }
+
+    .photo-card:nth-child(1) { animation-delay: 1.2s; }
+    .photo-card:nth-child(2) { animation-delay: 1.4s; }
+    .photo-card:nth-child(3) { animation-delay: 1.6s; }
+    .photo-card:nth-child(4) { animation-delay: 1.8s; }
+    .photo-card:nth-child(5) { animation-delay: 2s; }
+    .photo-card:nth-child(6) { animation-delay: 2.2s; }
+
+    .photo-card:hover {
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+    }
+
+    .photo-card img {
       width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      height: 280px;
       object-fit: cover;
-      height: 250px;
+      transition: transform 0.4s ease;
     }
+
+    .photo-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .photo-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      color: white;
+      padding: 1.5rem 1rem 1rem;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .photo-card:hover .photo-overlay {
+      transform: translateY(0);
+    }
+
+    /* Footer */
     footer {
       text-align: center;
-      margin-top: 40px;
-      font-size: 1.1em;
-      color: #f8f7f3;
+      padding: clamp(2rem, 5vw, 4rem) 20px;
+      color: #fff;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+      font-size: clamp(1rem, 2.5vw, 1.2em);
+      position: relative;
+      z-index: 10;
+      animation: fadeInUp 1s ease-out 2.5s both;
+    }
+
+    /* Animations */
+    @keyframes bounceIn {
+      0% { transform: scale(0.3); opacity: 0; }
+      50% { transform: scale(1.05); }
+      70% { transform: scale(0.9); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Confetti */
+    .confetti {
+      position: fixed;
+      pointer-events: none;
+      z-index: 1000;
+      width: 12px;
+      height: 12px;
+      animation: confettiFall 4s linear infinite;
+    }
+
+    @keyframes confettiFall {
+      0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    /* Birthday Cake */
+    .cake {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 4rem;
+      animation: cakeBounce 2s infinite;
+      z-index: 100;
+      cursor: pointer;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    @keyframes cakeBounce {
+      0%, 100% { transform: scale(1) rotate(-3deg); }
+      50% { transform: scale(1.1) rotate(3deg); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .photos {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+      
+      .photo-card img {
+        height: 250px;
+      }
+      
+      .cake {
+        font-size: 3rem;
+        bottom: 10px;
+        right: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      main {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+      
+      .audio-player {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+
+    /* Scroll Progress */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+      z-index: 10000;
+      transition: width 0.1s ease;
     }
   </style>
 </head>
 <body>
-   <audio autoplay controls>
-	<source src="Ten2Five.mp3" type="audio/mpeg">
-  </audio>
+  <!-- Floating Background -->
+  <div class="floating-bg">
+    <i class="fas fa-star float">✨</i>
+    <i class="fas fa-heart float">💖</i>
+    <i class="fas fa-gift float">🎁</i>
+    <i class="fas fa-balloon float">🎈</i>
+    <i class="fas fa-sparkles float">⚡</i>
+  </div>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress"></div>
+
+  <!-- Audio Player -->
+  <div class="audio-player">
+    <i class="fas fa-music" style="color: #ff6b6b; font-size: 1.5rem;"></i>
+    <audio autoplay controls loop>
+      <source src="Ten2Five.mp3" type="audio/mpeg">
+      Your browser doesn't support audio.
+    </audio>
+  </div>
 
   <header>
-    <h1 class="wave-text">Hey
-    <span>I</span><span>p</span><span>p</span><span>a</span><span>n</span><span>g</span></h1>
-    <h1>🎉Finally turning 26🎉</h1>
-    <p>Wishing you an amazing day filled with laughter, good vibes, and all the best things life has to offer!</p>
+    <h1 class="wave-text">
+      H<span>e</span><span>y</span>
+      <span>I</span><span>p</span><span>p</span><span>a</span><span>n</span><span>g</span>!
+    </h1>
+    <h1 class="birthday-title">🎉 Finally turning 26 🎉</h1>
+    <p><i class="fas fa-heart"></i> Wishing you an amazing day filled with laughter, good vibes, and all the best things life has to offer! <i class="fas fa-heart"></i></p>
   </header>
 
   <main>
     <p>
       Hey Irfan <i>(or should I call you, Ippang?)</i>,  
 
-      Just wanted to drop by and say happy birthday, dude! Hope your day is chill, your food is good, and your laughs are loud. You're one of those awesome people who make hanging out a blast — family, friends, and everyone who knows you is lucky to have you around. Here's to more memories, crazy adventures, and everything you’re hoping for this year.  
+      Just wanted to drop by and say happy birthday, dude! Hope your day is chill, your food is good, and your laughs are loud. You're one of those awesome people who make hanging out a blast — family, friends, and everyone who knows you is lucky to have you around. Here's to more memories, crazy adventures, and everything you're hoping for this year.  
 
       Cheers, bro!🥂
-      <i>Your immortal enemy, Mikasa✨</i>  
     </p>
+    <div class="signature">
+      <i>Your immortal enemy, Mikasa✨</i>
+    </div>
   </main>
 
   <section class="photos" aria-label="Photos of Ippang">
-    <img src="ippang1.jpeg" alt="Ippang casual close-up selfie with earphones" />
-    <img src="ippang2.jpeg" alt="Ippang and friends hanging out at a cafe" />
-    <img src="ippang3.jpeg" alt="Ippang with friends outside at night showing peace signs" />
-    <img src="ippang4.jpeg" alt="Ippang on a video call selfie" />
-    <img src="ippang5.jpeg" alt="Ippang standing confidently outdoors with rocky hill backdrop" />
-    <img src="ipang6.jpeg" alt="Ippang at night with palm trees and lights" />
+    <div class="photo-card">
+      <img src="ippang1.jpeg" alt="Ippang casual close-up selfie with earphones" />
+      <div class="photo-overlay">
+        <h4>Cool Vibes Only 😎</h4>
+      </div>
+    </div>
+    <div class="photo-card">
+      <img src="ippang2.jpeg" alt="Ippang and friends hanging out at a cafe" />
+      <div class="photo-overlay">
+        <h4>Friends Forever ☕</h4>
+      </div>
+    </div>
+    <div class="photo-card">
+      <img src="ippang3.jpeg" alt="Ippang with friends outside at night showing peace signs" />
+      <div class="photo-overlay">
+        <h4>Night Adventures 🌙</h4>
+      </div>
+    </div>
+    <div class="photo-card">
+      <img src="ippang4.jpeg" alt="Ippang on a video call selfie" />
+      <div class="photo-overlay">
+        <h4>Always Connected 📱</h4>
+      </div>
+    </div>
+    <div class="photo-card">
+      <img src="ippang5.jpeg" alt="Ippang standing confidently outdoors with rocky hill backdrop" />
+      <div class="photo-overlay">
+        <h4>Adventure King 🏔️</h4>
+      </div>
+    </div>
+    <div class="photo-card">
+      <img src="ipang6.jpeg" alt="Ippang at night with palm trees and lights" />
+      <div class="photo-overlay">
+        <h4>Night Magic 🌴✨</h4>
+      </div>
+    </div>
   </section>
 
   <footer>
-    From all of us who know you — here’s to another year of awesomeness.<br />
-    Stay cool, Ippang!
+    <div style="font-size: 1.5em; margin-bottom: 1rem;">
+      🎂 From all of us who know you 🎂
+    </div>
+    <p>Here's to another year of awesomeness. Stay cool, Ippang! 🚀</p>
   </footer>
 
+  <!-- Birthday Cake -->
+  <div class="cake" onclick="launchBigConfetti()" title="Click for extra confetti!">
+    🎂
+  </div>
+
   <script>
-        // Confetti effect
-        function launchConfetti() {
-            const confetti = document.createElement('div');
-            confetti.style.position = 'fixed';
-            confetti.style.left = Math.random() * 100 + 'vw';
-            confetti.style.top = '-10px';
-            confetti.style.width = '10px';
-            confetti.style.height = '10px';
-            confetti.style.background = `hsl(${Math.random() * 360}, 70%, 60%)`;
-            confetti.style.pointerEvents = 'none';
-            confetti.style.zIndex = '1000';
-            confetti.style.animation = 'fall 3s linear forwards';
-            document.body.appendChild(confetti);
-            
-            setTimeout(() => confetti.remove(), 3000);
+    // Enhanced Confetti
+    function launchConfetti() {
+      for(let i = 0; i < 5; i++) {
+        setTimeout(() => createConfetti(), i * 100);
+      }
+    }
+
+    function createConfetti() {
+      const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#feca57', '#ff9ff3', '#54a0ff'];
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.width = (Math.random() * 10 + 8) + 'px';
+      confetti.style.height = confetti.style.width;
+      confetti.style.borderRadius = '50%';
+      document.body.appendChild(confetti);
+      
+      setTimeout(() => confetti.remove(), 4000);
+    }
+
+    // Big Confetti Explosion
+    function launchBigConfetti() {
+      for(let i = 0; i < 50; i++) {
+        setTimeout(() => createConfetti(), i * 50);
+      }
+    }
+
+    // Continuous Confetti
+    setInterval(launchConfetti, 1500);
+
+    // Scroll Progress
+    window.addEventListener('scroll', () => {
+      const scrollTop = document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = (scrollTop / scrollHeight) * 100;
+      document.querySelector('.scroll-progress').style.width = progress + '%';
+    });
+
+    // Intersection Observer for staggered animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
         }
+      });
+    });
 
-        const fallStyle = document.createElement('style');
-        fallStyle.textContent = `
-            @keyframes fall {
-                to {
-                    transform: translateY(100vh) rotate(720deg);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(fallStyle);
+    document.querySelectorAll('.photo-card').forEach(card => {
+      observer.observe(card);
+    });
 
-        // Meluncurkan konfeti setiap 500ms
-        setInterval(launchConfetti, 200);
-    </script>
-
+    // Auto-play audio on mobile
+    document.querySelector('audio').play().catch(() => {
+      // Fallback for mobile browsers
+    });
+  </script>
 </body>
 </html>
