@@ -1,490 +1,331 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Happy Birthday, Ippang! 🎉</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fredoka+One&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(-45deg, #ff9a9e, #fecfef, #fecfef, #a8edea, #fed6e3);
-      background-size: 400% 400%;
-      animation: gradientShift 15s ease infinite;
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* Floating Elements */
-    .floating-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .float {
-      position: absolute;
-      animation: float 6s ease-in-out infinite;
-      opacity: 0.7;
-    }
-
-    .float:nth-child(1) { left: 10%; animation-delay: 0s; font-size: 2rem; color: #ff6b6b; }
-    .float:nth-child(2) { left: 20%; animation-delay: 1s; font-size: 1.5rem; color: #4ecdc4; }
-    .float:nth-child(3) { left: 80%; animation-delay: 2s; font-size: 2.5rem; color: #45b7d1; }
-    .float:nth-child(4) { left: 90%; animation-delay: 3s; font-size: 1.8rem; color: #feca57; }
-    .float:nth-child(5) { left: 50%; animation-delay: 4s; font-size: 2rem; color: #ff9ff3; top: 80%; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(180deg); }
-    }
-
-    /* Header */
-    header {
-      text-align: center;
-      padding: clamp(20px, 5vw, 40px) 20px;
-      position: relative;
-      z-index: 10;
-    }
-
-    .birthday-title {
-      font-family: 'Fredoka One', cursive;
-      font-size: clamp(2.5rem, 8vw, 5rem);
-      background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #feca57);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 1rem;
-      animation: bounceIn 1.5s ease-out;
-    }
-
-    .wave-text {
-      display: inline-block;
-      animation: wave 2s infinite;
-    }
-
-    .wave-text span {
-      display: inline-block;
-      font-family: 'Fredoka One', cursive;
-      font-size: clamp(1.2rem, 4vw, 2rem);
-      font-weight: 700;
-      color: #ff6b6b;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-      animation: waveLetter 2s infinite;
-    }
-
-    @keyframes wave {
-      0%, 100% { transform: rotate(-5deg); }
-      50% { transform: rotate(5deg); }
-    }
-
-    @keyframes waveLetter {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-    }
-
-    .wave-text span:nth-child(1) { animation-delay: 0.1s; }
-    .wave-text span:nth-child(2) { animation-delay: 0.2s; }
-    .wave-text span:nth-child(3) { animation-delay: 0.3s; }
-    .wave-text span:nth-child(4) { animation-delay: 0.4s; }
-    .wave-text span:nth-child(5) { animation-delay: 0.5s; }
-    .wave-text span:nth-child(6) { animation-delay: 0.6s; }
-
-    header p {
-      font-size: clamp(1rem, 3vw, 1.3rem);
-      color: #fff;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-      margin-bottom: 1rem;
-      animation: fadeInUp 1s ease-out 0.5s both;
-    }
-
-    /* Audio Player */
-    .audio-player {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      margin: 1rem auto;
-      max-width: 300px;
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(10px);
-      padding: 1rem;
-      border-radius: 50px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-      animation: fadeInUp 1s ease-out 0.8s both;
-    }
-
-    .audio-player audio {
-      flex: 1;
-      outline: none;
-    }
-
-    /* Main Content */
-    main {
-      max-width: 800px;
-      margin: 0 auto 3rem;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(20px);
-      padding: clamp(2rem, 5vw, 3rem);
-      border-radius: 25px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-      position: relative;
-      z-index: 10;
-      animation: fadeInUp 1s ease-out 1s both;
-    }
-
-    main p {
-      font-size: clamp(1rem, 2.5vw, 1.2em);
-      line-height: 1.8;
-      color: #444;
-      white-space: pre-wrap;
-      text-align: justify;
-    }
-
-    .signature {
-      font-style: italic;
-      color: #ff6b6b;
-      font-weight: 600;
-      margin-top: 2rem;
-      font-size: 1.1em;
-    }
-
-    /* Photos Section */
-    .photos {
-      max-width: 1000px;
-      margin: 3rem auto;
-      padding: 0 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      position: relative;
-      z-index: 10;
-    }
-
-    .photo-card {
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-      transition: all 0.4s ease;
-      animation: fadeInUp 0.8s ease-out both;
-    }
-
-    .photo-card:nth-child(1) { animation-delay: 1.2s; }
-    .photo-card:nth-child(2) { animation-delay: 1.4s; }
-    .photo-card:nth-child(3) { animation-delay: 1.6s; }
-    .photo-card:nth-child(4) { animation-delay: 1.8s; }
-    .photo-card:nth-child(5) { animation-delay: 2s; }
-    .photo-card:nth-child(6) { animation-delay: 2.2s; }
-
-    .photo-card:hover {
-      transform: translateY(-15px) scale(1.02);
-      box-shadow: 0 25px 60px rgba(0,0,0,0.3);
-    }
-
-    .photo-card img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-
-    .photo-card:hover img {
-      transform: scale(1.1);
-    }
-
-    .photo-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,0.8));
-      color: white;
-      padding: 1.5rem 1rem 1rem;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-    }
-
-    .photo-card:hover .photo-overlay {
-      transform: translateY(0);
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: clamp(2rem, 5vw, 4rem) 20px;
-      color: #fff;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-      font-size: clamp(1rem, 2.5vw, 1.2em);
-      position: relative;
-      z-index: 10;
-      animation: fadeInUp 1s ease-out 2.5s both;
-    }
-
-    /* Animations */
-    @keyframes bounceIn {
-      0% { transform: scale(0.3); opacity: 0; }
-      50% { transform: scale(1.05); }
-      70% { transform: scale(0.9); }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(30px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Confetti */
-    .confetti {
-      position: fixed;
-      pointer-events: none;
-      z-index: 1000;
-      width: 12px;
-      height: 12px;
-      animation: confettiFall 4s linear infinite;
-    }
-
-    @keyframes confettiFall {
-      0% {
-        transform: translateY(-100vh) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh) rotate(720deg);
-        opacity: 0;
-      }
-    }
-
-    /* Birthday Cake */
-    .cake {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      font-size: 4rem;
-      animation: cakeBounce 2s infinite;
-      z-index: 100;
-      cursor: pointer;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
-
-    @keyframes cakeBounce {
-      0%, 100% { transform: scale(1) rotate(-3deg); }
-      50% { transform: scale(1.1) rotate(3deg); }
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .photos {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1rem;
-      }
-      
-      .photo-card img {
-        height: 250px;
-      }
-      
-      .cake {
-        font-size: 3rem;
-        bottom: 10px;
-        right: 10px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      main {
-        margin: 1rem;
-        padding: 1.5rem;
-      }
-      
-      .audio-player {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-    }
-
-    /* Scroll Progress */
-    .scroll-progress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 0%;
-      height: 4px;
-      background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
-      z-index: 10000;
-      transition: width 0.1s ease;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 26th, Ipang! - From Your Immortal Enemy</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+        body { 
+            margin: 0; 
+            background: #000; 
+            color: #00ff00; 
+            font-family: 'Orbitron', monospace; 
+            overflow-x: hidden; 
+            cursor: crosshair; 
+        }
+        #terminal { 
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.95); 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            z-index: 100; 
+            transition: opacity 1s ease-out;
+        }
+        #output { 
+            font-size: 1.5em; 
+            line-height: 1.6; 
+            white-space: pre-wrap; 
+            text-align: center;
+            padding: 20px;
+            max-width: 80%;
+        }
+        @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0.3; } }
+        .hidden { display: none !important; }
+        #main { 
+            padding: 50px 20px; 
+            text-align: center; 
+            max-width: 900px; 
+            margin: auto; 
+            opacity: 0;
+            animation: fadeIn 1s ease-in 4.5s forwards;
+        }
+        @keyframes fadeIn { to { opacity: 1; } }
+        h1 { 
+            font-size: 3em; 
+            text-shadow: 0 0 20px #00ff00; 
+            animation: glow 2s infinite alternate;
+            margin-bottom: 20px;
+        }
+        @keyframes glow { 
+            from { text-shadow: 0 0 20px #00ff00; } 
+            to { text-shadow: 0 0 50px #00ff00, 0 0 100px #00ff00; } 
+        }
+        .photo-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 20px; 
+            margin: 40px 0; 
+        }
+        .photo { 
+            position: relative; 
+            overflow: hidden; 
+            border-radius: 15px; 
+            transition: all 0.4s; 
+            cursor: pointer;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 10px rgba(0,255,0,0.3);
+        }
+        .photo:hover { 
+            transform: scale(1.05) rotate(2deg); 
+            filter: hue-rotate(180deg) brightness(1.2);
+            box-shadow: 0 0 30px #00ff00;
+        }
+        .photo img { 
+            width: 100%; 
+            height: 220px; 
+            object-fit: cover; 
+            transition: all 0.4s; 
+        }
+        #quiz { 
+            background: rgba(0,255,0,0.15); 
+            padding: 30px; 
+            border: 3px solid #00ff00; 
+            border-radius: 15px; 
+            margin: 40px 0; 
+            backdrop-filter: blur(10px);
+        }
+        button { 
+            background: linear-gradient(45deg, #00ff00, #00cc00); 
+            color: #000; 
+            border: none; 
+            padding: 18px 40px; 
+            font-family: inherit; 
+            font-size: 1.2em; 
+            font-weight: bold;
+            cursor: pointer; 
+            border-radius: 10px; 
+            transition: all 0.3s; 
+            margin: 10px;
+            box-shadow: 0 5px 15px rgba(0,255,0,0.4);
+        }
+        button:hover { 
+            background: linear-gradient(45deg, #00cc00, #00ff00); 
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,255,0,0.6);
+        }
+        #confetti-canvas { 
+            position: fixed; 
+            top: 0; left: 0; 
+            pointer-events: none; 
+            z-index: 200; 
+        }
+        .matrix-bg { 
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            z-index: -1; 
+            opacity: 0.08; 
+        }
+        .music-player {
+            margin: 30px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,255,0,0.3);
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .photo-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
 </head>
 <body>
-  <!-- Floating Background -->
-  <div class="floating-bg">
-    <i class="fas fa-star float">✨</i>
-    <i class="fas fa-heart float">💖</i>
-    <i class="fas fa-gift float">🎁</i>
-    <i class="fas fa-balloon float">🎈</i>
-    <i class="fas fa-sparkles float">⚡</i>
-  </div>
+    <!-- Matrix Background -->
+    <canvas id="matrix-bg" class="matrix-bg"></canvas>
+    
+    <!-- Terminal Intro -->
+    <div id="terminal">
+        <div id="output">
+Hacking into Ippang's system...
+[26th Birthday Protocol Activated]
+User: IRFAN RIPAT (a.k.a. IPPANG) ✨
+Age: 26 - Level Up Achieved! 🚀
+Intruder: Mikasa✨ (Immortal Enemy Mode)
+Access Granted. Welcome, bro!
 
-  <!-- Scroll Progress -->
-  <div class="scroll-progress"></div>
+Press any key or wait 5s to continue...
+        </div>
+    </div>
 
-  <!-- Audio Player -->
-  <div class="audio-player">
-    <i class="fas fa-music" style="color: #ff6b6b; font-size: 1.5rem;"></i>
-    <audio autoplay controls loop>
-      <source src="Ten2Five.mp3" type="audio/mpeg">
-      Your browser doesn't support audio.
-    </audio>
-  </div>
-
-  <header>
-    <h1 class="wave-text">
-      H<span>e</span><span>y</span>
-      <span>I</span><span>p</span><span>p</span><span>a</span><span>n</span><span>g</span>!
-    </h1>
-    <h1 class="birthday-title">🎉 Finally turning 26 🎉</h1>
-    <p><i class="fas fa-heart"></i> Wishing you an amazing day filled with laughter, good vibes, and all the best things life has to offer! <i class="fas fa-heart"></i></p>
-  </header>
-
-  <main>
-    <p>
-      Hey Irfan <i>(or should I call you, Ippang?)</i>,  
-
-      Just wanted to drop by and say happy birthday, dude! Hope your day is chill, your food is good, and your laughs are loud. You're one of those awesome people who make hanging out a blast — family, friends, and everyone who knows you is lucky to have you around. Here's to more memories, crazy adventures, and everything you're hoping for this year.  
+    <!-- Main Content -->
+    <div id="main">
+        <h1>🎉 Finally turning 26, Ippang! 🎉</h1>
+        <p style="font-size: 1.3em; margin: 30px 0; line-height: 1.6;">
+            Hey Ippang,  Just wanted to drop by and say happy birthday, dude! Hope your day is chill, your food is good, and your laughs are loud. You're one of those awesome people who make hanging out a blast — family, friends, and everyone who knows you is lucky to have you around. Here's to more memories, crazy adventures, and everything you're hoping for this year.  
 
       Cheers, bro!🥂
-    </p>
-    <div class="signature">
-      <i>Your immortal enemy, Mikasa✨</i>
+        </p>
+        
+        <!-- Lagu Latar (Ganti dengan Spotify/YouTube embed) -->
+        <div class="music-player"> 
+		<iframe data-testid="embed-iframe"
+		style="border-radius:12px" 				src="https://open.spotify.com/embed/track/2AegXEsZbzAHfMqUDmIl0r?utm_source=generator&theme=0"
+		width="100%" height="152"
+		frameBorder="0" 
+		allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+        <p style="color: #666; font-size: 0.9em;"></p>
+        
+        <!-- Galeri Foto Interaktif - SEMUA UDAH DIFIX! -->
+        <h2 style="margin: 40px 0 20px 0;">📸 KOMUK Ippang</h2>
+        <div class="photo-grid">
+            <div class="photo" onclick="showAlert('sok imut lu! 😆')">
+                <img src="ippang1.jpeg">
+            </div>
+            <div class="photo" onclick="showAlert('ciye mitap sama abdaf 😂')">
+                <img src="ippang2.jpeg" alt="Ipang moment 2">
+            </div>
+            <div class="photo" onclick="showAlert('kapan lagi yakan 🤣')">
+                <img src="ippang3.jpeg" alt="Ipang moment 3">
+            </div>
+            <div class="photo" onclick="showAlert('komuk tolong! 🥺')">
+                <img src="ippang4.jpeg" alt="Ipang moment 4">
+            </div>
+            <div class="photo" onclick="showAlert('gatau nyomot aja 😏')">
+                <img src="ippang5.jpeg" alt="Ipang moment 5">
+            </div>
+            <div class="photo" onclick="showAlert('cakep juga pas ini 🔥')">
+                <img src="ipang6.jpeg" alt="Ipang moment 6">
+            </div>
+        </div>
+        
+        <!-- Quiz Interaktif -->
+        <div id="quiz">
+            <h2>🧠 Quiz: who are you?</h2>
+            <p id="quiz-question">click the button to start the quiz!</p>
+            <button onclick="nextQuiz()">Answer the questions!</button>
+            <p id="quiz-score" style="font-size: 1.2em; color: #00ff88;">Score: 0/3</p>
+        </div>
+        
+        <button onclick="unlockGift()" style="font-size: 1.4em; padding: 20px 50px;">
+            🔓 Unlock the secret gift from Mikasa✨
+        </button>
     </div>
-  </main>
 
-  <section class="photos" aria-label="Photos of Ippang">
-    <div class="photo-card">
-      <img src="ippang1.jpeg" alt="Ippang casual close-up selfie with earphones" />
-      <div class="photo-overlay">
-        <h4>Cool Vibes Only 😎</h4>
-      </div>
-    </div>
-    <div class="photo-card">
-      <img src="ippang2.jpeg" alt="Ippang and friends hanging out at a cafe" />
-      <div class="photo-overlay">
-        <h4>Friends Forever ☕</h4>
-      </div>
-    </div>
-    <div class="photo-card">
-      <img src="ippang3.jpeg" alt="Ippang with friends outside at night showing peace signs" />
-      <div class="photo-overlay">
-        <h4>Night Adventures 🌙</h4>
-      </div>
-    </div>
-    <div class="photo-card">
-      <img src="ippang4.jpeg" alt="Ippang on a video call selfie" />
-      <div class="photo-overlay">
-        <h4>Always Connected 📱</h4>
-      </div>
-    </div>
-    <div class="photo-card">
-      <img src="ippang5.jpeg" alt="Ippang standing confidently outdoors with rocky hill backdrop" />
-      <div class="photo-overlay">
-        <h4>Adventure King 🏔️</h4>
-      </div>
-    </div>
-    <div class="photo-card">
-      <img src="ipang6.jpeg" alt="Ippang at night with palm trees and lights" />
-      <div class="photo-overlay">
-        <h4>Night Magic 🌴✨</h4>
-      </div>
-    </div>
-  </section>
+    <!-- Confetti Canvas -->
+    <canvas id="confetti-canvas"></canvas>
 
-  <footer>
-    <div style="font-size: 1.5em; margin-bottom: 1rem;">
-      🎂 From all of us who know you 🎂
-    </div>
-    <p>Here's to another year of awesomeness. Stay cool, Ippang! 🚀</p>
-  </footer>
-
-  <!-- Birthday Cake -->
-  <div class="cake" onclick="launchBigConfetti()" title="Click for extra confetti!">
-    🎂
-  </div>
-
-  <script>
-    // Enhanced Confetti
-    function launchConfetti() {
-      for(let i = 0; i < 5; i++) {
-        setTimeout(() => createConfetti(), i * 100);
-      }
-    }
-
-    function createConfetti() {
-      const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#feca57', '#ff9ff3', '#54a0ff'];
-      const confetti = document.createElement('div');
-      confetti.className = 'confetti';
-      confetti.style.left = Math.random() * 100 + 'vw';
-      confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-      confetti.style.width = (Math.random() * 10 + 8) + 'px';
-      confetti.style.height = confetti.style.width;
-      confetti.style.borderRadius = '50%';
-      document.body.appendChild(confetti);
-      
-      setTimeout(() => confetti.remove(), 4000);
-    }
-
-    // Big Confetti Explosion
-    function launchBigConfetti() {
-      for(let i = 0; i < 50; i++) {
-        setTimeout(() => createConfetti(), i * 50);
-      }
-    }
-
-    // Continuous Confetti
-    setInterval(launchConfetti, 1500);
-
-    // Scroll Progress
-    window.addEventListener('scroll', () => {
-      const scrollTop = document.documentElement.scrollTop;
-      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const progress = (scrollTop / scrollHeight) * 100;
-      document.querySelector('.scroll-progress').style.width = progress + '%';
-    });
-
-    // Intersection Observer for staggered animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animationPlayState = 'running';
+    <script>
+        // Matrix Background
+        const matrixCanvas = document.getElementById('matrix-bg');
+        const ctx = matrixCanvas.getContext('2d');
+        matrixCanvas.width = window.innerWidth;
+        matrixCanvas.height = window.innerHeight;
+        
+        const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+        const fontSize = 14;
+        const columns = matrixCanvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+        
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+            ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+            ctx.fillStyle = '#00ff00';
+            ctx.font = fontSize + 'px monospace';
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975)
+                    drops[i] = 0;
+                drops[i]++;
+            }
         }
-      });
-    });
+        setInterval(drawMatrix, 35);
 
-    document.querySelectorAll('.photo-card').forEach(card => {
-      observer.observe(card);
-    });
+        // Terminal Fade Out - DITAMBAH KEYBOARD SUPPORT!
+        let terminalTimeout = setTimeout(hideTerminal, 5000);
+        document.addEventListener('keydown', hideTerminal);
+        document.addEventListener('click', hideTerminal);
 
-    // Auto-play audio on mobile
-    document.querySelector('audio').play().catch(() => {
-      // Fallback for mobile browsers
-    });
-  </script>
+        function hideTerminal() {
+            clearTimeout(terminalTimeout);
+            document.getElementById('terminal').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('terminal').classList.add('hidden');
+                document.getElementById('main').style.opacity = '1';
+            }, 1000);
+        }
+
+        // Quiz Interaktif - FIXED!
+        const quizData = [
+            { q: "Ippang's favourite bug?", a: "null" },
+            { q: "Ippang's favourite dish?", a: "kapurung" },
+            { q: "Ippang's dream job this year?", a: "grab" }
+        ];
+        let currentQuiz = 0, score = 0;
+
+        function nextQuiz() {
+            if (currentQuiz < quizData.length) {
+                document.getElementById('quiz-question').textContent = quizData[currentQuiz].q;
+                const userAnswer = prompt('Jawab: ' + quizData[currentQuiz].q);
+                if (userAnswer && userAnswer.toLowerCase().includes(quizData[currentQuiz].a.toLowerCase().split(' ')[0])) {
+                    score++;
+                    alert('✅ right! Good job!');
+                } else {
+                    alert('❌ deng! answer: ' + quizData[currentQuiz].a);
+                }
+                currentQuiz++;
+                document.getElementById('quiz-score').textContent = `Score: ${score}/${quizData.length}`;
+            } else {
+                alert(`Quiz is done! Final Score: ${score}/${quizData.length} 😎`);
+                if (score === 3) alert('Perfect! you are the real Ippang!');
+            }
+        }
+
+        // Alert Function
+        function showAlert(message) {
+            alert('✨ ' + message + ' ✨');
+        }
+
+        // Unlock Gift + Confetti - IMPROVED!
+        function unlockGift() {
+            alert('🎁 SECRET GIFT UNLOCKED! 🎁\n\nUnlimited meal vouchers that can be claimed until May 15, 2026 (or by your request)!\n\nFrom your immortal enemy: Mikasa✨\nStay awesome, Ippang! 🥂💚');
+            launchConfetti();
+        }
+
+        // Better Confetti Effect
+        function launchConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctxConf = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const confetti = [];
+            for (let i = 0; i < 200; i++) {
+                confetti.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    vx: (Math.random() - 0.5) * 10,
+                    vy: Math.random() * 5 + 5,
+                    color: `hsl(${Math.random()*360}, 100%, 60%)`,
+                    size: Math.random() * 8 + 4
+                });
+            }
+            
+            function animateConfetti() {
+                ctxConf.clearRect(0, 0, canvas.width, canvas.height);
+                confetti.forEach((c, i) => {
+                    ctxConf.fillStyle = c.color;
+                    ctxConf.fillRect(c.x, c.y, c.size, c.size);
+                    c.x += c.vx;
+                    c.y += c.vy;
+                    c.vy += 0.1;
+                    if (c.y > canvas.height) confetti.splice(i, 1);
+                });
+                if (confetti.length > 0) requestAnimationFrame(animateConfetti);
+            }
+            animateConfetti();
+        }
+
+        // Responsive resize
+        window.addEventListener('resize', () => {
+            matrixCanvas.width = window.innerWidth;
+            matrixCanvas.height = window.innerHeight;
+        });
+    </script>
 </body>
 </html>
